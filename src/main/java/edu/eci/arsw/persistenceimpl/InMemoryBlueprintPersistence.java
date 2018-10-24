@@ -67,7 +67,8 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
     @Override
     public void addNewBlueprint(Blueprint bp) {
-        blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
+        blueprints.putIfAbsent(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
+        //blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
     }
 
     @Override
