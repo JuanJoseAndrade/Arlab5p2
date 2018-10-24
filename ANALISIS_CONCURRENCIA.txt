@@ -1,0 +1,13 @@
+Condiciones de carrera:
+Existe una condición de carrera al momento de agregar diferentes planos, 
+ya que se pueden dar incoherencias. De igual manera la lectura de los datos
+ puede ser incoherente debido a las operaciones de PUT y POST.
+Región critica:
+Estructura de datos Hashmap que contiene los planos.
+Solución aplicada:
+Se cambió la estructura de datos HashMap por un ConcurrentHashMap, 
+una estructura de datos atómica que permite  y garantiza el acceso 
+equilibrado de diferentes usuarios. Esto garantiza que se aplica una 
+región crítica donde está el acceso a los recursos de los planos. 
+Posteriormente se usó la función IfAbsentPut() para garantizar que la
+condición de carrera al momento de agregar un nuevo plano dejara de existir.  
